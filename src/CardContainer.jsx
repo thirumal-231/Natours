@@ -1,27 +1,26 @@
-import { useEffect, useState } from "react";
 import Card from "./Card";
-import api from "./api/axios";
+import { getAllTours } from "./api/tours";
+import { useQuery } from "@tanstack/react-query";
 
 function CardContainer() {
-  const [tourData, setTourData] = useState([]);
+  const {
+    data: tours,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["tours"],
+    queryFn: getAllTours,
+  });
 
-  useEffect(() => {
-    api
-      .get("/api/v1/tours")
-      .then((res) => {
-        setTourData(res.data.data.docs);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  if (isLoading) return <p>Loading tours...</p>;
+  if (error) return <p>Failed to load tours</p>;
 
   return (
     <>
       <div className="card-container">
-        {tourData.length > 0 ? (
-          tourData.map((tour) => <Card data={tour} />)
-        ) : (
-          <p>Loading tours</p>
-        )}
+        {tours.map((tour) => (
+          <Card data={tour} />
+        ))}
       </div>
     </>
   );

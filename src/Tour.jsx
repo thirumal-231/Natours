@@ -1,32 +1,22 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Mapbox from "./Mapbox";
-import api from "./api/axios";
+import { getTour } from "./api/tours";
+import { useQuery } from "@tanstack/react-query";
 
 function Tour() {
   const { slug } = useParams();
-  const [tour, setTour] = useState(null);
+  const {
+    data: tour,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["tour", slug],
+    queryFn: () => getTour(slug),
+    enabled: !!slug,
+  });
 
-  useEffect(() => {
-    api
-      .get(`/api/v1/tours/slug/${slug}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        const foundTour = res.data.data.tour;
-        console.log(foundTour);
-        setTour(foundTour);
-      })
-      .catch((err) => console.log(err));
-  }, [slug]);
-
-  if (!tour) {
-    return (
-      <section className="section-header">
-        <h2 style={{ textAlign: "center" }}>Loading tour details...</h2>
-      </section>
-    );
-  }
+  if (isLoading) return <p>Loading Tour...</p>;
+  if (error) return <p>Error loading tour.</p>;
 
   return (
     <>
@@ -65,6 +55,7 @@ function Tour() {
           </div>
         </div>
       </section>
+
       {/* DESCRIPTION SECTION */}
       <section className="section-description">
         <div className="overview-box">
