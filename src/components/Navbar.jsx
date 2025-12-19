@@ -1,13 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   return (
     <>
       <header className="header">
         <nav className="nav nav--tours">
-          <a className="nav__el" href="/">
+          <NavLink className="nav__el" href="/">
             All tours
-          </a>
+          </NavLink>
         </nav>
         <div className="header__logo">
           <a href="/">
@@ -15,12 +18,28 @@ const Navbar = () => {
           </a>
         </div>
         <nav className="nav nav--user">
-          <NavLink className="nav__el" to="/login">
-            Log in
-          </NavLink>
-          <NavLink className="nav__el nav__el--cta" to="/signup">
-            Sign up
-          </NavLink>
+          {!isAuthenticated ? (
+            <>
+              <NavLink className="nav__el" to="/login">
+                Log in
+              </NavLink>
+              <NavLink className="nav__el nav__el--cta" to="/signup">
+                Sign up
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink className="nav__el nav__el--logout">Log out</NavLink>
+              <NavLink className="nav__el" to="/me">
+                <img
+                  className="nav__user-img"
+                  src="/img/users/default.jpg"
+                  alt="Photo of Thirumal"
+                />
+                <span>{user.name}</span>
+              </NavLink>
+            </>
+          )}
         </nav>
       </header>
     </>

@@ -1,17 +1,19 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Mapbox from "./Mapbox";
+import api from "./api/axios";
 
 function Tour() {
   const { slug } = useParams();
   const [tour, setTour] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:3003/api/v1/tours")
+    api
+      .get(`/api/v1/tours/slug/${slug}`, {
+        withCredentials: true,
+      })
       .then((res) => {
-        const foundTour = res.data.data.docs.find((t) => t.slug === slug);
+        const foundTour = res.data.data.tour;
         console.log(foundTour);
         setTour(foundTour);
       })
@@ -57,13 +59,12 @@ function Tour() {
                 <use href="/img/icons.svg#icon-map-pin"></use>
               </svg>
               <span className="heading-box__text">
-                {tour.startLocation.description}
+                {/* {tour.startLocation.description} */}
               </span>
             </div>
           </div>
         </div>
       </section>
-
       {/* DESCRIPTION SECTION */}
       <section className="section-description">
         <div className="overview-box">
@@ -196,6 +197,8 @@ function Tour() {
       </section>
 
       <Mapbox locations={tour.locations} />
+
+      {/* REVIEWS SECTION */}
       <section className="section-reviews">
         <div className="reviews">
           {/* Review 1 */}
@@ -341,6 +344,8 @@ function Tour() {
           </div>
         </div>
       </section>
+
+      {/* CTA SECTION */}
       <section className="section-cta">
         <div className="cta">
           {/* Logo */}

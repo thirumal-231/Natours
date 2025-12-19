@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import axios from "axios";
+import api from "./api/axios";
 
 function CardContainer() {
   const [tourData, setTourData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:3003/api/v1/tours")
+    api
+      .get("/api/v1/tours")
       .then((res) => {
         setTourData(res.data.data.docs);
       })

@@ -9,15 +9,21 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Tour from "./Tour";
+import RequireAuth from "./components/RequireAuth";
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
+        {/* public routes */}
         <Route index element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/tour/:slug" element={<Tour />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+
+        {/* protected routes */}
+        <Route element={<RequireAuth />}>
+          <Route path="tour/:slug" element={<Tour />} />
+        </Route>
       </Route>
     )
   );
@@ -26,30 +32,3 @@ const App = () => {
 };
 
 export default App;
-
-// function App() {
-//   const [showLogin, setShowLogin] = useState(false);
-//   const [showTour, setShowTour] = useState(false);
-//   const [tour, setTour] = useState({});
-
-//   function handleShowLogin() {
-//     setShowLogin(true);
-//   }
-//   return (
-//     <div>
-//       <Navbar loginState={handleShowLogin} />
-//       {!showTour ? (
-//         <Main
-//           showLogin={showLogin}
-//           showTour={setShowTour}
-//           tourDetails={setTour}
-//         />
-//       ) : (
-//         <Tour data={tour} />
-//       )}
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// export default App;
