@@ -45,7 +45,7 @@ const Navbar = () => {
               <NavLink className="nav__el" to="/me">
                 <img
                   className="nav__user-img"
-                  src="/img/users/default.jpg"
+                  src={user.photo}
                   alt="Photo of Thirumal"
                 />
                 <span>{user.name}</span>

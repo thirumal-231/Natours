@@ -112,7 +112,7 @@ function Tour() {
                 <div className="overview-box__detail" key={guide._id}>
                   <img
                     className="overview-box__img"
-                    src={`/img/users/${guide.photo}`}
+                    src={guide.photo}
                     alt={guide.name}
                   />
                   <span className="overview-box__label">

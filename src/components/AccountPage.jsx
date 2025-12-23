@@ -19,6 +19,7 @@ export default function AccountPage() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setpasswordConfirm] = useState("");
+  const [photo, setPhoto] = useState(null);
 
   useEffect(() => {
     if (!user) return;
@@ -57,7 +58,11 @@ export default function AccountPage() {
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
-    dispatch(updateMe({ name, email }));
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    if (photo) formData.append("photo", photo);
+    dispatch(updateMe(formData));
   };
 
   const handlePasswordChange = (e) => {
@@ -191,14 +196,17 @@ export default function AccountPage() {
               </div>
 
               <div className="form__group form__photo-upload">
-                <img
-                  className="form__user-photo"
-                  src={`/img/users/${user.photo}`}
-                  alt="User"
+                <img className="form__user-photo" src={user.photo} alt="User" />
+                <input
+                  type="file"
+                  id="photo"
+                  accept="image/*"
+                  hidden
+                  onChange={(e) => setPhoto(e.target.files[0])}
                 />
-                <a className="btn-text" href="#">
+                <label htmlFor="photo" className="btn-text">
                   Choose new photo
-                </a>
+                </label>
               </div>
 
               <div className="form__group right">

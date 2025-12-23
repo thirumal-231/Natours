@@ -49,14 +49,18 @@ export const getMe = createAsyncThunk("auth.getMe", async (_, thunkAPI) => {
 
 export const updateMe = createAsyncThunk(
   "auth/updateMe",
-  async (data, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
       const res = await api.patch(
         `http://localhost:3003/api/v1/users/updateMe`,
-        data,
-        { withCredentials: true }
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      console.log("UPDATED:", data);
       return res.data.data.user;
     } catch (err) {
       return thunkAPI.rejectWithValue(
@@ -161,6 +165,11 @@ const authSlice = createSlice({
         state.status = "succeeded";
         state.user = action.payload;
         state.isAuthenticated = true;
+      })
+      .addCase(getMe.rejected, (state) => {
+        state.status = "failed";
+        state.user = null;
+        state.isAuthenticated = false;
       });
   },
 });
