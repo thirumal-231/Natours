@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "../store/authSlice";
+import { useState } from "react";
 
 const Navbar = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <>
       <header className="header">
@@ -29,7 +33,15 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <NavLink className="nav__el nav__el--logout">Log out</NavLink>
+              <NavLink
+                className="nav__el nav__el--logout"
+                onClick={() =>
+                  navigate("/logout", { state: { background: location } })
+                }
+                to="/logout"
+              >
+                Log out
+              </NavLink>
               <NavLink className="nav__el" to="/me">
                 <img
                   className="nav__user-img"

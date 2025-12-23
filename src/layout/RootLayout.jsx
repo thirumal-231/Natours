@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../Footer";
 import { useDispatch } from "react-redux";
 import { getMe } from "../store/authSlice";
@@ -12,7 +12,6 @@ const RootLayout = () => {
   useEffect(() => {
     dispatch(getMe());
   }, [dispatch]);
-
   return (
     <>
       <Toaster

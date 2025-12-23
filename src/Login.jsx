@@ -21,7 +21,7 @@ function Login() {
 
   useEffect(() => {
     if (status === "succeeded" && isAuthenticated) {
-      toast.success("Logged In.");
+      toast.success("Logged in successfully.");
       navigate("/", { replace: true });
     } else if (status === "failed") {
       toast.error(error);
