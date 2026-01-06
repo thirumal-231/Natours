@@ -23,10 +23,10 @@ const App = () => {
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<ConfirmLogout />} />
 
+        <Route path="tour/:slug" element={<Tour />} />
         {/* protected routes */}
         <Route element={<RequireAuth />}>
           <Route path="me" element={<AccountPage />} />
-          <Route path="tour/:slug" element={<Tour />} />
         </Route>
       </Route>
     )

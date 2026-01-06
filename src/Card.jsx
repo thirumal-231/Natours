@@ -10,7 +10,7 @@ function Card({ data }) {
             <div className="card__picture-overlay">&nbsp;</div>
             <img
               className="card__picture-img"
-              src={`/img/tours/${data.imageCover}`}
+              src={data.imageCover}
               alt={data.name}
             />
           </div>

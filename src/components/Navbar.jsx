@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { logout } from "../store/authSlice";
 import { useState } from "react";
 
 const Navbar = () => {

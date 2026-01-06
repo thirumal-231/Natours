@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 function Login() {
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,18 +16,20 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
+    setIsSubmitting(true);
     dispatch(login({ email, password }));
   };
 
   useEffect(() => {
+    if (!isSubmitting) return;
     if (status === "succeeded" && isAuthenticated) {
       toast.success("Logged in successfully.");
       navigate("/", { replace: true });
     } else if (status === "failed") {
       toast.error(error);
+      setIsSubmitting(false);
     }
-  }, [isAuthenticated, navigate, status, error]);
+  }, [isAuthenticated, navigate, status, error, isSubmitting]);
 
   return (
     <div className="main">

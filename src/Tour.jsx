@@ -2,8 +2,12 @@ import { useParams } from "react-router-dom";
 import Mapbox from "./Mapbox";
 import { getTour } from "./api/tours";
 import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
+import BookTourButton from "./components/BookTourButton";
 
 function Tour() {
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+
   const { slug } = useParams();
   const {
     data: tour,
@@ -26,7 +30,7 @@ function Tour() {
           <div className="header__hero-overlay">&nbsp;</div>
           <img
             className="header__hero-img"
-            src={`/img/tours/${tour.imageCover}`}
+            src={tour.imageCover}
             alt={tour.name}
           />
         </div>
@@ -150,7 +154,7 @@ function Tour() {
         >
           <div style={{ flex: "1 1 30%", maxWidth: "30%" }}>
             <img
-              src={`/img/tours/${tour.images[0]}`}
+              src={tour.images[0]}
               alt={`${tour.name} 1`}
               style={{
                 width: "100%",
@@ -162,7 +166,7 @@ function Tour() {
           </div>
           <div style={{ flex: "1 1 30%", maxWidth: "30%" }}>
             <img
-              src={`/img/tours/${tour.images[1]}`}
+              src={tour.images[1]}
               alt={`${tour.name} 2`}
               style={{
                 width: "100%",
@@ -174,7 +178,7 @@ function Tour() {
           </div>
           <div style={{ flex: "1 1 30%", maxWidth: "30%" }}>
             <img
-              src={`/img/tours/${tour.images[2]}`}
+              src={tour.images[2]}
               alt={`${tour.name} 3`}
               style={{
                 width: "100%",
@@ -339,33 +343,36 @@ function Tour() {
       {/* CTA SECTION */}
       <section className="section-cta">
         <div className="cta">
-          {/* Logo */}
           <div className="cta__img cta__img--logo">
             <img src="/img/logo-white.png" alt="Natours logo" />
           </div>
 
-          {/* Background Images */}
-
           <img
             className="cta__img cta__img--1"
-            src={`/img/tours/${tour.images[1]}`}
+            src={tour.images[1]}
             alt={tour.name}
           />
           <img
             className="cta__img cta__img--2"
-            src={`/img/tours/${tour.images[0]}`}
+            src={tour.images[0]}
             alt={tour.name}
           />
 
-          {/* Content */}
           <div className="cta__content">
             <h2 className="heading-secondary">What are you waiting for?</h2>
             <p className="cta__text">
-              7 days. 1 adventure. Infinite memories. Make it yours today!
+              {tour.duration} days. 1 adventure. Infinite memories. Make it
+              yours today!
             </p>
-            <a className="btn btn--green span-all-rows" href="/login">
-              Log in to book tour
-            </a>
+
+            {/* Conditional Rendering Logic */}
+            {isAuthenticated ? (
+              <BookTourButton tourId={tour._id} />
+            ) : (
+              <a className="btn btn--green span-all-rows" href="/login">
+                Log in to book tour
+              </a>
+            )}
           </div>
         </div>
       </section>
