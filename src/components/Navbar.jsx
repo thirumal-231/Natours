@@ -11,7 +11,7 @@ const Navbar = () => {
     <>
       <header className="header">
         <nav className="nav nav--tours">
-          <NavLink className="nav__el" href="/">
+          <NavLink className="nav__el" to="/">
             All tours
           </NavLink>
         </nav>

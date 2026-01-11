@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   resetPasswordUpdateStatus,
   resetUpdateStatus,
@@ -86,12 +86,12 @@ export default function AccountPage() {
             </li>
 
             <li>
-              <a href="#">
+              <Link to="/my-tours">
                 <svg>
                   <use xlinkHref="img/icons.svg#icon-briefcase" />
                 </svg>
                 <span>My bookings</span>
-              </a>
+              </Link>
             </li>
 
             <li>

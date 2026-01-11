@@ -12,6 +12,7 @@ import Tour from "./Tour";
 import RequireAuth from "./components/RequireAuth";
 import ConfirmLogout from "./components/ConfirmLogout";
 import AccountPage from "./components/AccountPage";
+import MyTours from "./components/MyTours";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -27,6 +28,7 @@ const App = () => {
         {/* protected routes */}
         <Route element={<RequireAuth />}>
           <Route path="me" element={<AccountPage />} />
+          <Route path="my-tours" element={<MyTours />} />
         </Route>
       </Route>
     )

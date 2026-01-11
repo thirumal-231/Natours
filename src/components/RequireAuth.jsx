@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 export default function RequireAuth() {
   const { user, isAuthenticated, status } = useSelector((state) => state.auth);
-  if (status === "loading") {
+  if (status === "loading" || status === "idle") {
     console.log(user, isAuthenticated, status);
 
     return <p>Checking authentication...</p>;
