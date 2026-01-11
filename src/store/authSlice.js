@@ -20,6 +20,23 @@ export const login = createAsyncThunk(
   }
 );
 
+// signup
+export const signup = createAsyncThunk(
+  "auth/signup",
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await api.post(
+        "http://localhost:3003/api/v1/users/signup",
+        credentials,
+        { withCredentials: true }
+      );
+      return res.data.data.user;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response.data.message);
+    }
+  }
+);
+
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     const res = await api.get(
@@ -118,6 +135,19 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
       })
       .addCase(login.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      // signup
+      .addCase(signup.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(signup.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+        state.isAuthenticated = true;
+      })
+      .addCase(signup.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       })
