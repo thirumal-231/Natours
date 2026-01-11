@@ -9,7 +9,7 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await api.post(
-        "http://localhost:3003/api/v1/users/login",
+        `${process.env.REACT_APP_BE_API_URL}/api/v1/users/login`,
         credentials,
         { withCredentials: true }
       );
@@ -26,7 +26,7 @@ export const signup = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await api.post(
-        "http://localhost:3003/api/v1/users/signup",
+        `${process.env.REACT_APP_BE_API_URL}/api/v1/users/signup`,
         credentials,
         { withCredentials: true }
       );
@@ -40,7 +40,7 @@ export const signup = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     const res = await api.get(
-      "http://localhost:3003/api/v1/users/logout",
+      `${process.env.REACT_APP_BE_API_URL}/api/v1/users/logout`,
       {},
       { withCredentials: true }
     );
@@ -55,9 +55,12 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 // check logged in user
 export const getMe = createAsyncThunk("auth.getMe", async (_, thunkAPI) => {
   try {
-    const res = await api.get("http://localhost:3003/api/v1/users/me", {
-      withCredentials: true,
-    });
+    const res = await api.get(
+      `${process.env.REACT_APP_BE_API_URL}/api/v1/users/me`,
+      {
+        withCredentials: true,
+      }
+    );
     return res.data.data.doc;
   } catch (err) {
     return thunkAPI.rejectWithValue(null);
@@ -69,7 +72,7 @@ export const updateMe = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const res = await api.patch(
-        `http://localhost:3003/api/v1/users/updateMe`,
+        `${process.env.REACT_APP_BE_API_URL}/api/v1/users/updateMe`,
         formData,
         {
           withCredentials: true,
@@ -92,7 +95,7 @@ export const updatePassword = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const res = await api.patch(
-        "http://localhost:3003/api/v1/users/updateMyPassword",
+        `${process.env.REACT_APP_BE_API_URL}/api/v1/users/updateMyPassword`,
         data,
         { withCredentials: true }
       );
