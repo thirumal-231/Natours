@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Natours 🏔️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Natours** is a modern, premium tour booking application designed to connect adventurers with nature. Built with a robust React ecosystem, it offers a seamless and interactive experience for discovering, booking, and reviewing outdoor tours.
 
-## Available Scripts
+[**🔴 Live Demo**](https://natours.trustudios.in)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📸 Gallery
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div align="center">
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134254/Screenshot_2026-01-11_at_5.50.22_PM_jo5bfm.png" width="45%" />
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134253/Screenshot_2026-01-11_at_5.50.36_PM_xw9iuw.png" width="45%" />
+</div>
+<div align="center">
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134253/Screenshot_2026-01-11_at_5.50.45_PM_who1sb.png" width="45%" />
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134253/Screenshot_2026-01-11_at_5.50.52_PM_wmnpbl.png" width="45%" />
+</div>
+<div align="center">
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134253/Screenshot_2026-01-11_at_5.51.16_PM_ba8eew.png" width="45%" />
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134254/Screenshot_2026-01-11_at_5.51.08_PM_zrj3bq.png" width="45%" />
+</div>
+<div align="center">
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134254/Screenshot_2026-01-11_at_5.51.32_PM_cgft0d.png" width="45%" />
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134254/Screenshot_2026-01-11_at_5.51.55_PM_zmkex4.png" width="45%" />
+</div>
+<div align="center">
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134255/Screenshot_2026-01-11_at_5.52.30_PM_fbbvav.png" width="45%" />
+  <img src="https://res.cloudinary.com/dmvbudba3/image/upload/v1768134257/Screenshot_2026-01-11_at_5.52.09_PM_nkvseo.png" width="45%" />
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🌟 Key Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Immersive Tour Discovery**: Browse a curated list of tours with high-quality imagery and detailed descriptions.
+- **Interactive Maps**: visualize tour locations and start points using interactive Leaflet maps.
+- **Secure Authentication**: Robust login and signup system for user account management.
+- **Booking System**: Seamless booking process integrated with Stripe for secure payments.
+- **User Reviews**: Read authentic reviews from other travelers and share your own experiences.
+- **Responsive Design**: Fully responsive interface that looks great on desktops, tablets, and mobile devices.
+- **Performance Optimized**: Fast loading times and smooth transitions using modern React patterns.
 
-### `npm run build`
+## 🛠️ Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project leverages a modern and powerful technology stack:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Category | Technology |
+|----------|------------|
+| **Frontend Framework** | [React 19](https://react.dev/) |
+| **State Management** | [Redux Toolkit](https://redux-toolkit.js.org/) |
+| **Data Fetching** | [TanStack Query (React Query)](https://tanstack.com/query/latest) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) & PostCSS |
+| **Maps** | [Leaflet](https://leafletjs.com/) & [React Leaflet](https://react-leaflet.js.org/) |
+| **Payments** | [Stripe](https://stripe.com/) |
+| **HTTP Client** | [Axios](https://axios-http.com/) |
+| **Routing** | [React Router DOM](https://reactrouter.com/) |
+| **Notifications** | [React Hot Toast](https://react-hot-toast.com/) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Getting Started
 
-### `npm run eject`
+Follow these steps to set up the project locally on your machine.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/natours.git
+   cd natours
+   ```
 
-## Learn More
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
+   The application will run on `http://localhost:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+   This compiles the app into static files in the `build` directory.
 
-### Code Splitting
+## 📂 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+A quick look at the top-level files and directories:
 
-### Analyzing the Bundle Size
+```
+.
+├── public/                 # Static assets
+├── src/
+│   ├── api/                # API request functions
+│   ├── components/         # Reusable UI components
+│   ├── layout/             # Layout components (e.g., Header, Footer)
+│   ├── store/              # Redux store configuration and slices
+│   ├── App.js              # Main application entry point
+│   ├── index.css           # Global styles and Tailwind imports
+│   ├── index.js            # Entry application render
+│   └── ...                 # Feature-specific pages (Tour, Login, etc.)
+├── package.json            # Project dependencies and scripts
+└── README.md               # Project documentation
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🤝 Contributing
 
-### Making a Progressive Web App
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your-username/natours/issues).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="center">
+  Created with ❤️ by the Thirumala Reddy.
+</p>
